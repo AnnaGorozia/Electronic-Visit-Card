@@ -4,9 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.evc.fragments.ProfileTab;
+import com.evc.fragments.ReceivedHistoryTab;
+import com.evc.fragments.SentHistoryTab;
+import com.evc.fragments.UserCardsTab;
 import com.evc.login.LoginActivity;
 import com.evc.models.User;
 import com.evc.tasks.ServerGetUserTask;
@@ -16,7 +27,17 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements NetworkEventListener{
+
+    //Tab Variables
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private List<String> tabTitles = new ArrayList<>();
+    private MyPagerAdapter pagerAdapter;
+    private TabLayout tabLayout;
+    private static ViewPager viewPager;
 
     private static final String USER_ID = "user_id";
     private static final String NO_LOGED_IN_USER = "-1";
@@ -25,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
     private SharedPreferences sharedPref;
     private static User user;
     private static String userId;
-    private TextView helloWorld;
     private static Gson gson = new GsonBuilder().create();
 
 
@@ -36,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         init();
+        initTabs();
 
         if (userId.equals(NO_LOGED_IN_USER)) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -47,11 +68,32 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
             String userJson = sharedPref.getString(USER, NO_LOGED_IN_USER);
             if (!userJson.equals(NO_LOGED_IN_USER)) {
                 MainActivity.this.user = gson.fromJson(userJson, User.class);
-                helloWorld.setText("Hello " + user.getFirstName());
             }
 
         }
 
+    }
+
+    private void initTabs() {
+        fragmentList.add(ProfileTab.newInstance());
+        fragmentList.add(UserCardsTab.newInstance());
+        fragmentList.add(SentHistoryTab.newInstance());
+        fragmentList.add(ReceivedHistoryTab.newInstance());
+
+        tabTitles.add("Profile");
+        tabTitles.add("Cards");
+        tabTitles.add("Sent Cards");
+        tabTitles.add("Received Cards");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     public static User getUser() {
@@ -85,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
 
         userId = sharedPref.getString(USER_ID, NO_LOGED_IN_USER);
 
-        this.helloWorld = (TextView) findViewById(R.id.hello_world);
     }
 
     @Override
@@ -105,11 +146,37 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(USER, gson.toJson(user, User.class));
         editor.apply();
-        helloWorld.setText("Hello " + user.getFirstName());
     }
 
     @Override
     public void onUserObjectByMail(User user) {
 
+    }
+
+    private class MyPagerAdapter extends FragmentStatePagerAdapter {
+
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int pos) {
+            return fragmentList.get(pos);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return PagerAdapter.POSITION_NONE;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabTitles.get(position);
+        }
     }
 }

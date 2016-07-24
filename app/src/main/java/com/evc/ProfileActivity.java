@@ -13,9 +13,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.evc.Adapters.CompanyAdapter;
-import com.evc.Adapters.EmailAdapter;
-import com.evc.Adapters.PhoneAdapter;
+import com.evc.adapters.CompanyAdapter;
+import com.evc.adapters.EmailAdapter;
+import com.evc.adapters.PhoneAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
