@@ -11,19 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.evc.MainActivity;
 import com.evc.R;
 import com.evc.models.User;
 import com.evc.tasks.ServerUserRegisterTask;
-import com.evc.tasks.UserRegisterTask;
+import com.evc.tasks.UserServiceTask;
 import com.evc.transport.NetworkEventListener;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 public class SignupActivity extends AppCompatActivity implements NetworkEventListener {
 
@@ -92,11 +85,11 @@ public class SignupActivity extends AppCompatActivity implements NetworkEventLis
         String phone = phoneText.getText().toString();
         String password = passwordText.getText().toString();
 
-        UserRegisterTask userRegisterTask = null;
-        userRegisterTask = new ServerUserRegisterTask();
-        userRegisterTask.setNetworkEventListener(this);
+        UserServiceTask userServiceTask = null;
+        userServiceTask = new ServerUserRegisterTask();
+        userServiceTask.setNetworkEventListener(this);
         String[] taskParams = {name, lastName, email, phone, password};
-        userRegisterTask.execute(taskParams);
+        userServiceTask.execute(taskParams);
 
 
 //        new android.os.Handler().postDelayed(
@@ -192,11 +185,26 @@ public class SignupActivity extends AppCompatActivity implements NetworkEventLis
 
     @Override
     public void onUserRegistered(String message) {
-        System.out.println("----------------------message");
+        System.out.println("----------------------  " + message);
 
-        onSignupSuccess();
+        if (message.equals("-1")) {
+            onSignupFailed();
+        } else {
+            MainActivity.setUserId(message);
+            onSignupSuccess();
+        }
 
         progressDialog.dismiss();
+
+    }
+
+    @Override
+    public void onUserLoggedIn(String message) {
+
+    }
+
+    @Override
+    public void onUserObjectReturned(User user) {
 
     }
 }

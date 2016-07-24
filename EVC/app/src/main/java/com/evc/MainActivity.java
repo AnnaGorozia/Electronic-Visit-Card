@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.evc.login.LoginActivity;
 import com.evc.login.SignupActivity;
 import com.evc.models.User;
+import com.evc.tasks.ServerGetUserTask;
+import com.evc.tasks.ServerUserLoginTask;
+import com.evc.tasks.UserServiceObjectTask;
+import com.evc.tasks.UserServiceTask;
+import com.evc.transport.NetworkEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NetworkEventListener{
 
     private static final String USER_ID = "user_id";
     private static final String NO_LOGED_IN_USER = "-1";
@@ -18,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private static User user;
     private static String userId;
+    private TextView helloWorld;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +58,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == LOGIN_CODE) {
             if (resultCode == RESULT_OK) {
-
-                this.userId = data.getStringExtra("user_id");
+                System.out.println("--------------------------------user id in mainactivity " + userId);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(USER_ID, userId);
                 editor.commit();
 
-                //TODO Get user by Id from server
+                UserServiceObjectTask userServiceTask = null;
+                userServiceTask = new ServerGetUserTask();
+                userServiceTask.setNetworkEventListener(this);
+                String[] taskParams = {userId};
+                userServiceTask.execute(taskParams);
+
+
             }
         }
     }
@@ -67,7 +79,23 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
 
         this.userId = sharedPref.getString(USER_ID, NO_LOGED_IN_USER);
+
+        this.helloWorld = (TextView) findViewById(R.id.hello_world);
     }
 
+    @Override
+    public void onUserRegistered(String message) {
 
+    }
+
+    @Override
+    public void onUserLoggedIn(String message) {
+
+    }
+
+    @Override
+    public void onUserObjectReturned(User user) {
+        this.user = user;
+        helloWorld.setText("Hello " + user.getFirstName());
+    }
 }

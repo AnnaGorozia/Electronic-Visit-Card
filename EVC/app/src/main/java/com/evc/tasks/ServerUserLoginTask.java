@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ServerUserRegisterTask extends UserServiceTask {
+public class ServerUserLoginTask extends UserServiceTask {
 
     private static Gson gson = new GsonBuilder().create();
     private String url = "http://192.168.0.100:8082/UserService";
@@ -24,22 +24,15 @@ public class ServerUserRegisterTask extends UserServiceTask {
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        networkEventListener.onUserRegistered(message);
+        networkEventListener.onUserLoggedIn(message);
     }
 
     @Override
     protected String doInBackground(String... params) {
 
-        url += "/registrateUser";
+        url += "/users/userLogin/" + params[0] + "/" + params[1];
 
-        User user = new User();
-        user.setFirstName(params[0]);
-        user.setLastName(params[1]);
-        user.setEmail(params[2]);
-        user.setPhone(params[3]);
-        user.setPassword(params[4]);
-
-        String body = gson.toJson(user);
+        String body = "";
 
         message = sendPostRequest(url, body);
 

@@ -11,12 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.models.User;
+import com.evc.tasks.ServerUserLoginTask;
+import com.evc.tasks.UserServiceTask;
+import com.evc.transport.NetworkEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements NetworkEventListener{
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
-
+    private ProgressDialog progressDialog;
     private EditText emailText;
     private EditText passwordText;
     private Button loginButton;
@@ -66,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
@@ -75,17 +80,22 @@ public class LoginActivity extends AppCompatActivity {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
+        UserServiceTask userServiceTask = null;
+        userServiceTask = new ServerUserLoginTask();
+        userServiceTask.setNetworkEventListener(this);
+        String[] taskParams = {email, password};
+        userServiceTask.execute(taskParams);
         // TODO: Implement your own authentication logic here.
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+//        new android.os.Handler().postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        // On complete call either onLoginSuccess or onLoginFailed
+//                        onLoginSuccess();
+//                        // onLoginFailed();
+//                        progressDialog.dismiss();
+//                    }
+//                }, 3000);
     }
 
 
@@ -139,5 +149,29 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    @Override
+    public void onUserRegistered(String message) {
+
+    }
+
+    @Override
+    public void onUserLoggedIn(String message) {
+        System.out.println("----------------------  " + message);
+
+        if (message.equals("-1")) {
+            onLoginFailed();
+        } else {
+            MainActivity.setUserId(message);
+            onLoginSuccess();
+        }
+
+        progressDialog.dismiss();
+    }
+
+    @Override
+    public void onUserObjectReturned(User user) {
+
     }
 }
