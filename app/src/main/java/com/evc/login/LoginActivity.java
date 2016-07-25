@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.models.Company;
 import com.evc.models.User;
 import com.evc.tasks.ServerGetUserByMailTask;
 import com.evc.tasks.ServerGetUserTask;
@@ -37,6 +38,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements NetworkEventListener {
     private static final String TAG = "LoginActivity";
@@ -259,5 +261,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
             userServiceTask.setNetworkEventListener(this);
             userServiceTask.execute(taskParams);
         }
+    }
+
+    @Override
+    public void onUserCompanies(List<Company> companies) {
+
     }
 }

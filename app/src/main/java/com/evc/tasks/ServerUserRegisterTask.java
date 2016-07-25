@@ -17,7 +17,7 @@ import java.net.URL;
 public class ServerUserRegisterTask extends UserServiceTask {
 
     private static Gson gson = new GsonBuilder().create();
-    private String url = "http://192.168.0.100:8082/UserService";
+    private String url = "http://192.168.43.188:8082/UserService";
 
     private String message;
 

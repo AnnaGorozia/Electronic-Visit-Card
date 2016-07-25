@@ -11,9 +11,6 @@ import com.evc.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by khrak on 7/24/16.
- */
 public class PhoneAdapter extends BaseAdapter {
 
     private ArrayList<String> list;

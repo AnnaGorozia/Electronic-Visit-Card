@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.models.Company;
 import com.evc.models.User;
 import com.evc.tasks.ServerUserRegisterTask;
 import com.evc.tasks.UserServiceTask;
 import com.evc.transport.NetworkEventListener;
+
+import java.util.List;
 
 public class SignupActivity extends AppCompatActivity implements NetworkEventListener {
 
@@ -210,6 +213,11 @@ public class SignupActivity extends AppCompatActivity implements NetworkEventLis
 
     @Override
     public void onUserObjectByMail(User user) {
+
+    }
+
+    @Override
+    public void onUserCompanies(List<Company> companies) {
 
     }
 }
