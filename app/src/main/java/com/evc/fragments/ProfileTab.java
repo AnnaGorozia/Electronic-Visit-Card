@@ -1,5 +1,6 @@
 package com.evc.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,8 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.evc.EditProfileActivity;
 import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.login.LoginActivity;
 import com.evc.models.Company;
 import com.evc.models.User;
 import com.evc.transport.UserInfoDownloaderListener;
@@ -28,6 +31,7 @@ import java.util.List;
 
 public class ProfileTab extends Fragment implements View.OnClickListener, UserInfoDownloaderListener {
 
+    private static final int EDIT_PROFILE_CODE = 6;
     private ImageView editIcon;
     private View view;
 
@@ -90,7 +94,8 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
 
     public void editProfile(View view) {
-        System.out.println("Edit profile");
+        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+        startActivityForResult(intent, EDIT_PROFILE_CODE);
     }
 
     public void click(View view) {
@@ -108,12 +113,12 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
         lastName.setText("Sakhelashvili");
 
 
-        EditText personalPhone = (EditText) getView().findViewById(R.id.personal_phone_number);
-
-        EditText personalEmail = (EditText) getView().findViewById(R.id.personal_email);
-
-        EditText firstCompany = (EditText) getView().findViewById(R.id.first_company);
-        EditText firstCompanyPosition = (EditText) getView().findViewById(R.id.first_company_position);
+//        EditText personalPhone = (EditText) getView().findViewById(R.id.personal_phone_number);
+//
+//        EditText personalEmail = (EditText) getView().findViewById(R.id.personal_email);
+//
+//        EditText firstCompany = (EditText) getView().findViewById(R.id.first_company);
+//        EditText firstCompanyPosition = (EditText) getView().findViewById(R.id.first_company_position);
 
 
     }
