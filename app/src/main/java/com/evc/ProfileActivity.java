@@ -37,11 +37,11 @@ public class ProfileActivity extends AppCompatActivity {
         lastName.setText("Sakhelashvili");
 
 
-        EditText personalPhone = (EditText) findViewById(R.id.personal_phone_number);
+        EditText personalPhone = (EditText) findViewById(R.id.edit_phone_number);
 
         EditText personalEmail = (EditText) findViewById(R.id.personal_email);
 
-        EditText firstCompany = (EditText) findViewById(R.id.first_company);
+        EditText firstCompany = (EditText) findViewById(R.id.edit_company);
         EditText firstCompanyPosition = (EditText) findViewById(R.id.first_company_position);
 
 
