@@ -28,8 +28,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template1);
 
-        getSupportActionBar().hide();
-
         Intent intent = new Intent(this, CardsActivity.class);
 
         startActivity(intent);

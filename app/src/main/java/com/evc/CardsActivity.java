@@ -32,8 +32,6 @@ public class CardsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template1);
 
-        getSupportActionBar().hide();
-
 
         HashMap config = new HashMap();
         config.put("cloud_name", "dpavqa5hs");
