@@ -1,65 +1,54 @@
 package com.evc.tasks;
 
-import com.evc.models.User;
+import com.evc.models.Company;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
-public class ServerUserLoginTask extends UserServiceTask {
+public class ServerGetCompaniesByUserIdTask extends UserServiceCompaniesTask {
 
     private static Gson gson = new GsonBuilder().create();
     private String url = "http://192.168.43.188:8082/UserService";
 
-    private String message;
+    private List<Company> companies;
 
     @Override
-    protected void onPostExecute(String message) {
-        super.onPostExecute(message);
-        networkEventListener.onUserLoggedIn(message);
+    protected void onPostExecute(List<Company> companies) {
+        super.onPostExecute(companies);
+        networkEventListener.onUserCompanies(companies);
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected List<Company> doInBackground(String... params) {
 
-        url += "/users/userLogin/" + params[0] + "/" + params[1];
+        url += "/users/companies/" + params[0];
 
         String body = "";
 
-        message = sendPostRequest(url, body);
+        companies = sendGetRequest(url, body);
 
-        return message;
+        return companies;
     }
 
-    private String sendPostRequest(String url, String body) {
+    private  List<Company> sendGetRequest(String url, String body) {
         HttpURLConnection httpURLConnection;
         String data = body;
         String result = null;
         try{
-            //Connect
             httpURLConnection = (HttpURLConnection) ((new URL(url).openConnection()));
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestMethod("GET");
             httpURLConnection.connect();
 
-            //Write
-            OutputStream os = httpURLConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            writer.write(data);
-            writer.close();
-            os.close();
-
-            //Read
             BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(),"UTF-8"));
 
             String line = null;
@@ -72,13 +61,17 @@ public class ServerUserLoginTask extends UserServiceTask {
             br.close();
             result = sb.toString();
             httpURLConnection.disconnect();
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return result;
+        List<Company> companies = null;
+        if (result.length() != 0) {
+            Type listType = new TypeToken<List<Company>>(){}.getType();
+            companies = gson.fromJson(result, listType);
+        }
+        return companies;
     }
 }
+
