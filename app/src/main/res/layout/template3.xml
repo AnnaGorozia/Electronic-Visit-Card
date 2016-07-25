@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/template3"
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        
+        <RelativeLayout
+            android:id="@+id/upper_part"
+            android:layout_width="match_parent"
+            android:layout_height="110dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:hint="Company Name"
+                android:layout_below="@id/logo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textColorHint="#5FA7E2"
+                android:textColor="#5FA7E2"/>
+            
+            <EditText
+                android:id="@+id/full_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:hint="Full name"
+                android:textColorHint="#000000"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/position"
+                android:layout_below="@id/full_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="15sp"
+                android:hint="Position"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/upper_part"
+            android:layout_width="match_parent"
+            android:layout_height="110dp">
+
+            <LinearLayout
+                android:id="@+id/fields"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/gradation_rectangle"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/company_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="Enter company address"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+
+                    <EditText
+                        android:id="@+id/company_Website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Enter company website"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+
+                    <EditText
+                        android:id="@+id/company_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="enter company phone"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/personal_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="Enter personal email"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+
+                    <EditText
+                        android:id="@+id/company_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Enter company email"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+
+                    <EditText
+                        android:id="@+id/personal_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="enter personal phone"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:background="#7B7B7B">
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

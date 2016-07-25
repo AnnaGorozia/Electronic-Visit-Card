@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/template2"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/back2"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp">
+
+        <EditText
+            android:id="@+id/company_website"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:layout_alignParentLeft="true"
+            android:hint="Company website"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/company_name"
+            android:layout_width="140dp"
+            android:layout_below="@id/company_website"
+            android:layout_height="wrap_content"
+            android:hint="Company name"
+            android:textColorHint="#ffffff"
+            android:layout_marginTop="-10dp"
+            android:textSize="18sp"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/first_name"
+            android:layout_width="110dp"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:hint="First name"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <EditText
+            android:id="@+id/last_name"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/first_name"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:hint="Last name"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <EditText
+            android:id="@+id/position"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/last_name"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:hint="Position"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/phone_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/card_phone_icon"/>
+
+                <EditText
+                    android:id="@+id/phone_number1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Work phone number"
+                    android:textColorHint="#000000"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/phone_number2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Personal phone number"
+                    android:textColorHint="#000000"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/email_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/card_email_icon"/>
+
+                <EditText
+                    android:id="@+id/email1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Work email"
+                    android:textColorHint="#000000"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:id="@+id/email2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Personal email"
+                    android:textColorHint="#000000"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

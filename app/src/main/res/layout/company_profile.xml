@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/profile_up_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#159BE9">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/edit_icon"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:onClick="editProfile"/>
+
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_centerInParent="true"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/company_profile1"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+
+            <TextView
+                android:id="@+id/first_name"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/profile_image"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hewlett-Packard"
+                android:textSize="29sp"
+                android:textColor="#FFFF"
+                android:typeface="sans"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/phone_numbers"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@id/profile_up_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:id="@+id/phone_icon_id"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/phone_icon"/>
+
+            <LinearLayout
+                android:layout_marginLeft="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <ListView
+                    android:id="@+id/phone_list_view"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ListView>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_below="@id/phone_numbers"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="90dp"
+            android:layout_height="2dip"
+            android:background="#BDBDBD" />
+
+
+        <RelativeLayout
+            android:id="@+id/emails"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@id/phone_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:id="@+id/email_icon_id"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/email_icon"/>
+
+            <LinearLayout
+                android:layout_marginLeft="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/email_list_view"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_below="@id/emails"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="90dp"
+            android:layout_height="2dip"
+            android:background="#BDBDBD" />
+
+
+        <RelativeLayout
+            android:id="@+id/employees"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@id/emails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:id="@+id/employees_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/employees_icon"/>
+
+            <LinearLayout
+                android:layout_marginLeft="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/employees_list_view"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </ListView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

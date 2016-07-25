@@ -1,5 +1,6 @@
 package com.evc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
@@ -25,11 +26,18 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.template1);
 
         getSupportActionBar().hide();
 
+        Intent intent = new Intent(this, CardsActivity.class);
+
+        startActivity(intent);
     }
+
+    private static final String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany", "Spain", "Georgia"
+    };
 
     public void editProfile(View view) {
         System.out.println("Edit profile");
