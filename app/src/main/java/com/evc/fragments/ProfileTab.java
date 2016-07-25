@@ -16,9 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.evc.Adapters.CompanyAdapter;
-import com.evc.Adapters.EmailAdapter;
-import com.evc.Adapters.PhoneAdapter;
 import com.evc.MainActivity;
 import com.evc.R;
 import com.evc.models.Company;
@@ -31,15 +28,13 @@ import java.util.List;
 
 public class ProfileTab extends Fragment implements View.OnClickListener, UserInfoDownloaderListener {
 
-    private User user;
-
     private ImageView editIcon;
     private View view;
 
-    private ListView listView;
-    private ListView emailListView;
-    private ListView companyListview;
     private TextView nameTextView;
+    private TextView phoneTextView;
+    private TextView mailTextView;
+    private TextView companyTextView;
 
     @Nullable
     @Override
@@ -81,10 +76,9 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
     private void init() {
         nameTextView = (TextView) view.findViewById(R.id.first_name);
-        listView = (ListView) getView().findViewById(R.id.phone_list_view);
-        emailListView = (ListView) getView().findViewById(R.id.email_list_view);
-        companyListview = (ListView) getView().findViewById(R.id.company_list_view);
-
+        phoneTextView = (TextView) view.findViewById(R.id.phone_number);
+        mailTextView = (TextView) view.findViewById(R.id.email);
+        companyTextView = (TextView) view.findViewById(R.id.company);
     }
 
     private void initButtons(View view) {
@@ -115,19 +109,12 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
 
         EditText personalPhone = (EditText) getView().findViewById(R.id.personal_phone_number);
-        EditText workPhone = (EditText) getView().findViewById(R.id.work_phone_number);
 
         EditText personalEmail = (EditText) getView().findViewById(R.id.personal_email);
-        EditText workEmail = (EditText) getView().findViewById(R.id.work_email_address);
 
         EditText firstCompany = (EditText) getView().findViewById(R.id.first_company);
         EditText firstCompanyPosition = (EditText) getView().findViewById(R.id.first_company_position);
 
-        EditText secondCompany = (EditText) getView().findViewById(R.id.second_company);
-        EditText secondCompanyPosition = (EditText) getView().findViewById(R.id.second_company_position);
-
-        EditText thirdCompany = (EditText) getView().findViewById(R.id.third_company);
-        EditText thirdCompanyPosition = (EditText) getView().findViewById(R.id.third_company_position);
 
     }
 
@@ -135,27 +122,9 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
         nameTextView.setText(MainActivity.getUser() != null ? MainActivity.getUser().getFirstName() : "");
 
+        phoneTextView.setText(MainActivity.getUser() != null ? MainActivity.getUser().getPhone() : "");
 
-        ArrayList<String> numbers = new ArrayList<>(Arrays.asList(MainActivity.getUser() != null ? MainActivity.getUser().getPhone() : ""));
-
-        listView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                numbers.size() * 300));
-
-        PhoneAdapter adapter = new PhoneAdapter(getActivity(), numbers);
-
-        listView.setAdapter(adapter);
-
-
-        ArrayList<String> emails = new ArrayList<>(Arrays.asList(MainActivity.getUser() != null ? MainActivity.getUser().getEmail() : ""));
-
-        EmailAdapter emailAdapter = new EmailAdapter(getActivity(), emails);
-
-
-        emailListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                emails.size() * 300));
-
-        emailListView.setAdapter(emailAdapter);
-
+        mailTextView.setText(MainActivity.getUser() != null ? MainActivity.getUser().getEmail() : "");
 
     }
 
@@ -169,16 +138,10 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
                 companies.add(company.getName());
             }
         } else {
-            companies = new ArrayList<>(Arrays.asList("Dropbox", "Oracle"));
+            companies = new ArrayList<>(Arrays.asList("Dropbox"));
         }
 
-        CompanyAdapter companyAdapter = new CompanyAdapter(getActivity(), companies);
-
-
-        companyListview.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                companies.size() * 300));
-
-        companyListview.setAdapter(companyAdapter);
+        companyTextView.setText(companies.get(0));
 
     }
 
@@ -200,14 +163,11 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
     @Override
     public void onUserInfoDownloaded() {
-        if (listView == null || emailListView == null) return;
-
         drawUserInfo();
     }
 
     @Override
     public void onUserCompaniesDownloaded() {
-        if (companyListview == null) return;
         drawUserCompanies();
 
     }
