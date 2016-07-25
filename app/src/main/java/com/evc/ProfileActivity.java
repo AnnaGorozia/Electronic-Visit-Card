@@ -38,19 +38,12 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         EditText personalPhone = (EditText) findViewById(R.id.personal_phone_number);
-        EditText workPhone = (EditText) findViewById(R.id.work_phone_number);
 
         EditText personalEmail = (EditText) findViewById(R.id.personal_email);
-        EditText workEmail = (EditText) findViewById(R.id.work_email_address);
 
         EditText firstCompany = (EditText) findViewById(R.id.first_company);
         EditText firstCompanyPosition = (EditText) findViewById(R.id.first_company_position);
 
-        EditText secondCompany = (EditText) findViewById(R.id.second_company);
-        EditText secondCompanyPosition = (EditText) findViewById(R.id.second_company_position);
-
-        EditText thirdCompany = (EditText) findViewById(R.id.third_company);
-        EditText thirdCompanyPosition = (EditText) findViewById(R.id.third_company_position);
 
     }
 

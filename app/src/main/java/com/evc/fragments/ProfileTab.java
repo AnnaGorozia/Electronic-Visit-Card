@@ -82,7 +82,6 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
     }
 
-
     public void editProfile(View view) {
         System.out.println("Edit profile");
     }
@@ -103,19 +102,11 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
 
 
         EditText personalPhone = (EditText) getView().findViewById(R.id.personal_phone_number);
-        EditText workPhone = (EditText) getView().findViewById(R.id.work_phone_number);
 
         EditText personalEmail = (EditText) getView().findViewById(R.id.personal_email);
-        EditText workEmail = (EditText) getView().findViewById(R.id.work_email_address);
 
         EditText firstCompany = (EditText) getView().findViewById(R.id.first_company);
         EditText firstCompanyPosition = (EditText) getView().findViewById(R.id.first_company_position);
-
-        EditText secondCompany = (EditText) getView().findViewById(R.id.second_company);
-        EditText secondCompanyPosition = (EditText) getView().findViewById(R.id.second_company_position);
-
-        EditText thirdCompany = (EditText) getView().findViewById(R.id.third_company);
-        EditText thirdCompanyPosition = (EditText) getView().findViewById(R.id.third_company_position);
 
     }
 
