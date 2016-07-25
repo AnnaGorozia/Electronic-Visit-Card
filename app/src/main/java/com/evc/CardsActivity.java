@@ -105,5 +105,4 @@ public class CardsActivity extends AppCompatActivity{
             System.out.println("uploaded");
         }
     }
-
 }

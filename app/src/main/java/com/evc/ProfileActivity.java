@@ -1,36 +1,20 @@
 package com.evc;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.evc.Adapters.CompanyAdapter;
-import com.evc.Adapters.EmailAdapter;
-import com.evc.Adapters.PhoneAdapter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.template1);
+        setContentView(R.layout.update_info);
 
-        Intent intent = new Intent(this, CardsActivity.class);
+        //drawProfilePage();
 
-        startActivity(intent);
     }
 
     private static final String[] COUNTRIES = new String[] {
@@ -41,38 +25,6 @@ public class ProfileActivity extends AppCompatActivity {
         System.out.println("Edit profile");
     }
 
-    public void click(View view) {
-        System.out.println("click!");
-    }
-
-    public void showPopupMenu(View view){
-        System.out.println("clicked!");
-        PopupMenu popup = new PopupMenu(this, view);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.companies:
-                        Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.card_history:
-                        Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.received_cards_item:
-                        Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.my_cards_item:
-                        Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        popup.show();
-    }
 
     private void drawEditProfile() {
         TextView fullName = (TextView) findViewById(R.id.full_name);
@@ -103,42 +55,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void drawProfilePage() {
-        ListView listView = (ListView) findViewById(R.id.phone_list_view);
 
-        ArrayList<String> numbers = new ArrayList<>(Arrays.asList("(521) 465-565", "(557) 224-253"));
+        TextView phone = (TextView) findViewById(R.id.phone_number);
 
-        listView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                numbers.size() * 150));
+        TextView email = (TextView) findViewById(R.id.email);
 
-        PhoneAdapter adapter = new PhoneAdapter(this, numbers);
+        TextView company = (TextView) findViewById(R.id.company);
 
-        listView.setAdapter(adapter);
-
-
-        ListView emailListView = (ListView) findViewById(R.id.email_list_view);
-        ArrayList<String> emails = new ArrayList<>(Arrays.asList("msakh12@freeuni.edu.ge",
-                "kakashi@konoha.hoka"));
-
-        EmailAdapter emailAdapter = new EmailAdapter(this, emails);
-
-
-        emailListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                emails.size() * 150));
-
-        emailListView.setAdapter(emailAdapter);
-
-
-        ListView companyListview = (ListView) findViewById(R.id.company_list_view);
-        ArrayList<String> companies = new ArrayList<>(Arrays.asList("Dropbox",   "Oracle"));
-
-        CompanyAdapter companyAdapter = new CompanyAdapter(this, companies);
-
-
-        companyListview.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                companies.size() * 150));
-
-        companyListview.setAdapter(companyAdapter);
-
+        phone.setText("(598) 125-654");
+        email.setText("msakh12@freenui.edu.ge");
+        company.setText("Google");
     }
 
     public void Cancel(View view) {

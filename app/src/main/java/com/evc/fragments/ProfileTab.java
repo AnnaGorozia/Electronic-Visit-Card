@@ -3,10 +3,7 @@ package com.evc.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -14,11 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.evc.Adapters.CompanyAdapter;
-import com.evc.Adapters.EmailAdapter;
-import com.evc.Adapters.PhoneAdapter;
 import com.evc.MainActivity;
 import com.evc.R;
 import com.evc.models.Company;
@@ -127,49 +120,8 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
     }
 
     private void drawProfilePage() {
-        listView = (ListView) getView().findViewById(R.id.phone_list_view);
-
-        ArrayList<String> numbers = new ArrayList<>(Arrays.asList(user.getPhone()));
-
-        listView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                numbers.size() * 170));
-
-        PhoneAdapter adapter = new PhoneAdapter(getActivity(), numbers);
-
-        listView.setAdapter(adapter);
 
 
-        emailListView = (ListView) getView().findViewById(R.id.email_list_view);
-        ArrayList<String> emails = new ArrayList<>(Arrays.asList(user.getEmail()));
-
-        EmailAdapter emailAdapter = new EmailAdapter(getActivity(), emails);
-
-
-        emailListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                emails.size() * 150));
-
-        emailListView.setAdapter(emailAdapter);
-
-
-        companyListview = (ListView) getView().findViewById(R.id.company_list_view);
-
-        ArrayList<String> companies = new ArrayList<>();
-        if (MainActivity.getUserCompanies() != null) {
-            List<Company> companyList = MainActivity.getUserCompanies();
-            for (Company company : companyList) {
-                companies.add(company.getName());
-            }
-        } else {
-            companies = new ArrayList<>(Arrays.asList("Dropbox", "Oracle"));
-        }
-
-        CompanyAdapter companyAdapter = new CompanyAdapter(getActivity(), companies);
-
-
-        companyListview.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                companies.size() * 300));
-
-        companyListview.setAdapter(companyAdapter);
 
     }
 
@@ -198,20 +150,20 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
         listView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 numbers.size() * 300));
 
-        PhoneAdapter adapter = new PhoneAdapter(getActivity(), numbers);
-
-        listView.setAdapter(adapter);
-
-
-        ArrayList<String> emails = new ArrayList<>(Arrays.asList(user.getEmail()));
-
-        EmailAdapter emailAdapter = new EmailAdapter(getActivity(), emails);
-
-
-        emailListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                emails.size() * 300));
-
-        emailListView.setAdapter(emailAdapter);
+//        PhoneAdapter adapter = new PhoneAdapter(getActivity(), numbers);
+//
+//        listView.setAdapter(adapter);
+//
+//
+//        ArrayList<String> emails = new ArrayList<>(Arrays.asList(user.getEmail()));
+//
+//        EmailAdapter emailAdapter = new EmailAdapter(getActivity(), emails);
+//
+//
+//        emailListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                emails.size() * 300));
+//
+//        emailListView.setAdapter(emailAdapter);
     }
 
     @Override
@@ -227,13 +179,13 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
             companies = new ArrayList<>(Arrays.asList("Dropbox", "Oracle"));
         }
 
-        CompanyAdapter companyAdapter = new CompanyAdapter(getActivity(), companies);
-
-
-        companyListview.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                companies.size() * 300));
-
-        companyListview.setAdapter(companyAdapter);
+//        CompanyAdapter companyAdapter = new CompanyAdapter(getActivity(), companies);
+//
+//
+//        companyListview.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                companies.size() * 300));
+//
+//        companyListview.setAdapter(companyAdapter);
 
     }
 }
