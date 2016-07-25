@@ -17,7 +17,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.evc.fragments.ProfileTab;
 import com.evc.fragments.ReceivedHistoryTab;
@@ -64,6 +68,12 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
     private static List<Company> userCompanies;
     private static Gson gson = new GsonBuilder().create();
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,8 +212,6 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
 
         userInfoDownloaderListener.onUserInfoDownloaded();
 
-
-
     }
 
     @Override
@@ -212,7 +220,13 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         Type listType = new TypeToken<List<Company>>(){}.getType();
         editor.putString(USER_COMPANIES, gson.toJson(companies, listType));
         editor.apply();
+        MainActivity.this.userCompanies = companies;
         userInfoDownloaderListener.onUserCompaniesDownloaded();
+    }
+
+    @Override
+    public void onCompanyRegistered(String message) {
+
     }
 
     @Override
@@ -245,5 +259,28 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         public CharSequence getPageTitle(int position) {
             return tabTitles.get(position);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.log_out:
+                MainActivity.this.user = null;
+                MainActivity.this.userCompanies = null;
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(USER_COMPANIES, NO_LOGED_IN_USER);
+                editor.apply();
+                editor.putString(USER, NO_LOGED_IN_USER);
+                editor.apply();
+                editor.putString(USER_ID, NO_LOGED_IN_USER);
+                editor.apply();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivityForResult(intent, LOGIN_CODE);
+                break;
+            default:
+                break;
+        }
+
+        return true;
     }
 }

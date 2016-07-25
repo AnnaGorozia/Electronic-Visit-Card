@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">EVC</string>
     <string name="facebook_app_id">317904261876144</string>
+    <string name="log_out">Log out</string>
 </resources>

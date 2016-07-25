@@ -68,5 +68,13 @@
             android:gravity="center"
             android:textSize="16dip"/>
 
+        <TextView android:id="@+id/link_signup_company"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="No Company account yet? Create one"
+            android:gravity="center"
+            android:textSize="16dip"/>
+
     </LinearLayout>
 </ScrollView>

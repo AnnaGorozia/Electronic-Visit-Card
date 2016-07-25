@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
     private Button loginButton;
     private LoginButton fbLoginButton;
     private TextView signupLink;
+    private TextView companyLink;
     private String[] taskParams;
     private CallbackManager callbackManager;
 
@@ -76,6 +77,16 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
+
+        companyLink.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), CompanySignupActivity.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
+            }
+        });
     }
 
     private void init() {
@@ -83,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
         passwordText = (EditText) findViewById(R.id.input_password);
         loginButton = (Button) findViewById(R.id.btn_login);
         signupLink = (TextView) findViewById(R.id.link_signup);
+        companyLink = (TextView) findViewById(R.id.link_signup_company);
         initFb();
     }
 
@@ -265,6 +277,11 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
 
     @Override
     public void onUserCompanies(List<Company> companies) {
+
+    }
+
+    @Override
+    public void onCompanyRegistered(String message) {
 
     }
 }

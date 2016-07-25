@@ -11,5 +11,6 @@ public interface NetworkEventListener {
 	public void onUserObjectReturned(User user);
     public void onUserObjectByMail(User user);
 	public void onUserCompanies(List<Company> companies);
+	public void onCompanyRegistered(String message);
 
 }

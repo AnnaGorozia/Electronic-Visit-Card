@@ -14,8 +14,8 @@
     <!--</style>-->
 
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimary">@color/CornflowerBlue</item>
+        <item name="colorPrimaryDark">@color/RoyalBlue</item>
         <item name="colorAccent">@color/Orange</item>
         <item name="android:textColor">@color/Black</item>
 
@@ -26,33 +26,33 @@
         <item name="colorControlHighlight">@color/white</item>
         <item name="android:textColorHint">@color/iron</item>
 
-        <item name="colorButtonNormal">@color/primary_darker</item>
-        <item name="android:colorButtonNormal">@color/primary_darker</item>
+        <item name="colorButtonNormal">@color/RoyalBlue</item>
+        <item name="android:colorButtonNormal">@color/RoyalBlue</item>
     </style>
 
     <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="colorAccent">@color/white</item>
         <item name="android:textColorPrimary">@color/iron</item>
-        <item name="android:background">@color/primary</item>
+        <item name="android:background">@color/CornflowerBlue</item>
     </style>
     <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimary">@color/CornflowerBlue</item>
+        <item name="colorPrimaryDark">@color/RoyalBlue</item>
         <item name="colorAccent">@color/Orange</item>
         <item name="android:textColorPrimary">@color/white</item>
 
         <item name="android:textColor">@color/white</item>
 
-        <item name="android:windowBackground">@color/primary</item>
+        <item name="android:windowBackground">@color/CornflowerBlue</item>
 
         <item name="colorControlNormal">@color/iron</item>
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlHighlight">@color/white</item>
         <item name="android:textColorHint">@color/iron</item>
 
-        <item name="colorButtonNormal">@color/primary_darker</item>
-        <item name="android:colorButtonNormal">@color/primary_darker</item>
+        <item name="colorButtonNormal">@color/RoyalBlue</item>
+        <item name="android:colorButtonNormal">@color/RoyalBlue</item>
     </style>
 
     <style name="AppTheme.ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
