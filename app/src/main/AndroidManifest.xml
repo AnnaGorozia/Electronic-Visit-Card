@@ -23,6 +23,7 @@
         </activity>
         <activity android:name="com.evc.login.LoginActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.evc.login.SignupActivity" android:theme="@style/AppTheme.Dark" />
+        <activity android:name="com.evc.EditProfileActivity" android:theme="@style/AppTheme" />
         <activity android:name="com.evc.login.CompanySignupActivity" android:theme="@style/AppTheme.Dark" />
 
         <activity android:name="CompanyProfileActivity"/>
