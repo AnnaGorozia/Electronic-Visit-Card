@@ -1,6 +1,7 @@
 package com.evc.tasks;
 
 import com.evc.MainActivity;
+import com.evc.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,7 +33,15 @@ public class ServerUserUpdateTask extends UserServiceTask {
 
         url += "/updateUser";
 
-        String body = "";
+        User user = new User();
+        user.setId(params[0]);
+        user.setFirstName(params[1]);
+        user.setLastName(params[2]);
+        user.setEmail(params[3]);
+        user.setPhone(params[4]);
+        user.setPassword(params[5]);
+
+        String body = gson.toJson(user);
 
         message = sendPostRequest(url, body);
 

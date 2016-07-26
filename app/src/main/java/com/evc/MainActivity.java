@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
     private static List<Company> userCompanies;
     private static Gson gson = new GsonBuilder().create();
 
-    public static String url = "http://192.168.0.110:8082/";
+    public static String url = "http://192.168.0.110:8787/";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
