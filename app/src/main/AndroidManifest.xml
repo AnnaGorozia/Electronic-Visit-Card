@@ -26,8 +26,6 @@
         <activity android:name="com.evc.EditProfileActivity" android:theme="@style/AppTheme" />
         <activity android:name="com.evc.login.CompanySignupActivity" android:theme="@style/AppTheme.Dark" />
 
-        <activity android:name=".BluetoothScanActivity"/>
-
         <activity android:name=".SendCardActivity" />
 
         // android:theme="@style/AppTheme.Dark.Dialog"

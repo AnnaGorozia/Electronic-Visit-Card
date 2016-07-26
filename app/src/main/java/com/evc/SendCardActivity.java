@@ -51,8 +51,66 @@ public class SendCardActivity extends AppCompatActivity {
 
 
     public void bluetoothClick(View view) {
-        System.out.println("bluetooth man!");
-        Intent intent = new Intent(this, BluetoothScanActivity.class);
-        startActivity(intent);
+
+        System.out.println("bluetooth clicked");
+
+//        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linear_layout);
+//
+//        TextView viewToBeConverted = (TextView) findViewById(R.id.first_name);
+//        linearLayout.setDrawingCacheEnabled(true);
+//
+//        //Toast.makeText(MainActivity.this, file.toString(), Toast.LENGTH_LONG).show();
+//
+//        File file = new File(getFilesDir() + "/","sample.png");
+//
+//        System.out.println(file.getAbsolutePath());
+//
+//        linearLayout.setDrawingCacheEnabled(true);
+//        linearLayout.buildDrawingCache();
+//
+//
+//        Bitmap bm = linearLayout.getDrawingCache();
+//
+//        System.out.println(bm);
+//        FileOutputStream out = null;
+//        try {
+//            out = new FileOutputStream(file);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        viewToBeConverted.setText("olala");
+//        viewToBeConverted.setDrawingCacheEnabled(true);
+//
+//
+//        Bitmap viewBitmap = linearLayout.getDrawingCache();
+//
+//
+//        linearLayout.setVisibility(View.VISIBLE);
+//
+//
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        viewBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos); //bm is the bitmap object
+//
+//        byte[] b = baos.toByteArray();
+//
+//        try
+//        {
+//
+//            out.write(b);
+//            out.flush();
+//            out.close();
+//
+//            Intent intent = new Intent();
+//            intent.setAction(Intent.ACTION_SEND);
+//            intent.setType("image/png");
+//            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file) );
+//            startActivity(intent);
+//        }
+//        catch (Exception e)
+//        {
+//
+//        }
     }
 }
