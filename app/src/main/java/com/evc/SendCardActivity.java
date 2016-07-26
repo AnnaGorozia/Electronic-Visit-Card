@@ -24,7 +24,6 @@ public class SendCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_card);
 
-
         Intent intent = getIntent();
         String cardid = intent.getStringExtra("card_id");
 
@@ -33,6 +32,7 @@ public class SendCardActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, USERS);
 
+        userField.setAdapter(adapter);
     }
 
 //    public void showPopup(View v) {
