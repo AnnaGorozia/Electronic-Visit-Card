@@ -25,6 +25,12 @@
         <activity android:name="com.evc.login.SignupActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.evc.login.CompanySignupActivity" android:theme="@style/AppTheme.Dark" />
 
+        <activity android:name=".BluetoothScanActivity" android:theme="@style/AppTheme.Dark.Dialog"/>
+
+        <activity android:name=".SendCardActivity" />
+
+        // android:theme="@style/AppTheme.Dark.Dialog"
+
         <activity android:name="CompanyProfileActivity"/>
         <activity android:name=".CardsActivity"/>
         <activity android:name="com.facebook.FacebookActivity"

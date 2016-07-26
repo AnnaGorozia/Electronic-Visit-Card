@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.cloudinary.Cloudinary;
@@ -30,7 +29,7 @@ public class CardsActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.template1);
+        setContentView(R.layout.template2);
 
 
         HashMap config = new HashMap();
@@ -48,7 +47,7 @@ public class CardsActivity extends AppCompatActivity{
 
         System.out.println(file.getAbsolutePath());
 
-        RelativeLayout v = (RelativeLayout)findViewById(R.id.template1);
+        RelativeLayout v = (RelativeLayout)findViewById(R.id.template2);
         v.setDrawingCacheEnabled(true);
         v.buildDrawingCache();
         Bitmap bm = view.getDrawingCache();
@@ -60,9 +59,6 @@ public class CardsActivity extends AppCompatActivity{
         out.close();
 
 
-        ImageView rl = (ImageView) findViewById(R.id.go);
-
-        rl.setImageBitmap(bm);
 
         Upload task = new Upload( cloudinary );
         task.execute(new String[] { "http://www.vogella.com" });
