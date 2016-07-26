@@ -14,6 +14,7 @@
             android:background="#159BE9">
 
             <Button
+                android:id="@+id/cancel_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -28,6 +29,7 @@
                 android:textSize="17sp"/>
 
             <Button
+                android:id="@+id/done_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -53,17 +55,17 @@
                 app:civ_border_color="#FF000000"/>
 
 
-            <TextView
-                android:id="@+id/full_name"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/profile_image"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hatake Kakashi"
-                android:textSize="29sp"
-                android:textColor="#FFFF"
-                android:typeface="sans"/>
+            <!--<TextView-->
+                <!--android:id="@+id/full_name"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_below="@id/profile_image"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Hatake Kakashi"-->
+                <!--android:textSize="29sp"-->
+                <!--android:textColor="#FFFF"-->
+                <!--android:typeface="sans"/>-->
 
 
         </RelativeLayout>
@@ -149,6 +151,68 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/old_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Old Password"
+                        android:textSize="17sp"
+                        android:textColor="#2E2E2E"/>
+
+                    <EditText
+                        android:id="@+id/user_old_password"
+                        android:layout_below="@id/old_password"
+                        android:background="@drawable/background_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:password="true"
+                        android:layout_marginRight="60dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="Hatake"
+                        android:textSize="15sp"
+                        android:textColor="#2E2E2E"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/new_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="New Password"
+                        android:textSize="17sp"
+                        android:textColor="#2E2E2E"/>
+
+                    <EditText
+                        android:id="@+id/user_new_password"
+                        android:layout_below="@id/new_password"
+                        android:background="@drawable/background_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:password="true"
+                        android:layout_marginRight="60dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="Hatake"
+                        android:textSize="15sp"
+                        android:textColor="#2E2E2E"/>
+
+                </RelativeLayout>
+
 
             </LinearLayout>
 
@@ -200,7 +264,7 @@
                         android:textColor="#6E6E6E"/>
 
                     <EditText
-                        android:id="@+id/personal_phone_number"
+                        android:id="@+id/edit_phone_number"
                         android:layout_below="@id/phone_number"
                         android:background="@drawable/background_border"
                         android:layout_width="match_parent"
@@ -221,72 +285,73 @@
 
         </RelativeLayout>
 
+        <!--<View-->
+            <!--android:layout_below="@id/phone_numbers"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_marginLeft="90dp"-->
+            <!--android:layout_height="2dip"-->
+            <!--android:background="#BDBDBD" />-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/emails"-->
+            <!--android:layout_marginTop="40dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:layout_below="@id/phone_numbers"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:id="@+id/email_icon_id"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:src="@drawable/email_icon"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_marginLeft="70dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/email"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="3dp"-->
+                        <!--android:text="Personal email address"-->
+                        <!--android:textSize="17sp"-->
+                        <!--android:textColor="#6E6E6E"/>-->
+
+                    <!--<EditText-->
+                        <!---->
+                        <!--android:id="@+id/edit_email"-->
+                        <!--android:layout_below="@id/email"-->
+                        <!--android:background="@drawable/background_border"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginRight="60dp"-->
+                        <!--android:paddingLeft="10dp"-->
+                        <!--android:paddingBottom="3dp"-->
+                        <!--android:paddingTop="3dp"-->
+                        <!--android:text="msakh12@freeuni.edu.ge"-->
+                        <!--android:textSize="15sp"-->
+                        <!--android:textColor="#2E2E2E"/>-->
+
+
+                <!--</RelativeLayout>-->
+
+            <!--</LinearLayout>-->
+
+        <!--</RelativeLayout>-->
+
         <View
             android:layout_below="@id/phone_numbers"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="90dp"
-            android:layout_height="2dip"
-            android:background="#BDBDBD" />
-
-
-        <RelativeLayout
-            android:id="@+id/emails"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="20dp"
-            android:paddingBottom="10dp"
-            android:layout_below="@id/phone_numbers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_marginTop="10dp"
-                android:id="@+id/email_icon_id"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/email_icon"/>
-
-            <LinearLayout
-                android:layout_marginLeft="70dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Personal email address"
-                        android:textSize="17sp"
-                        android:textColor="#6E6E6E"/>
-
-                    <EditText
-                        android:id="@+id/personal_email"
-                        android:layout_below="@id/email"
-                        android:background="@drawable/background_border"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="60dp"
-                        android:paddingLeft="10dp"
-                        android:paddingBottom="3dp"
-                        android:paddingTop="3dp"
-                        android:text="msakh12@freeuni.edu.ge"
-                        android:textSize="15sp"
-                        android:textColor="#2E2E2E"/>
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <View
-            android:layout_below="@id/emails"
             android:layout_width="fill_parent"
             android:layout_marginLeft="90dp"
             android:layout_height="2dip"
@@ -298,7 +363,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp"
             android:paddingBottom="10dp"
-            android:layout_below="@id/emails"
+            android:layout_below="@id/phone_numbers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -329,7 +394,7 @@
                         android:textColor="#6E6E6E"/>
 
                     <EditText
-                        android:id="@+id/first_company"
+                        android:id="@+id/edit_company"
                         android:layout_below="@id/first_company_position"
                         android:background="@drawable/background_border"
                         android:layout_width="match_parent"
