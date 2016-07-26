@@ -225,4 +225,9 @@ public class SignupActivity extends AppCompatActivity implements NetworkEventLis
     public void onCompanyRegistered(String message) {
 
     }
+
+    @Override
+    public void onUserUpdated(String message) {
+
+    }
 }

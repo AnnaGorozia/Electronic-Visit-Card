@@ -284,4 +284,9 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
     public void onCompanyRegistered(String message) {
 
     }
+
+    @Override
+    public void onUserUpdated(String message) {
+
+    }
 }

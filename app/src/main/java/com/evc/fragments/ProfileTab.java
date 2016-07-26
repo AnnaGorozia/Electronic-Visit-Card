@@ -1,6 +1,8 @@
 package com.evc.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +26,8 @@ import com.evc.login.LoginActivity;
 import com.evc.models.Company;
 import com.evc.models.User;
 import com.evc.transport.UserInfoDownloaderListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +38,8 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
     private static final int EDIT_PROFILE_CODE = 6;
     private ImageView editIcon;
     private View view;
+    private static Gson gson = new GsonBuilder().create();
+
 
     private TextView nameTextView;
     private TextView phoneTextView;
@@ -113,14 +119,6 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
         lastName.setText("Sakhelashvili");
 
 
-//        EditText personalPhone = (EditText) getView().findViewById(R.id.personal_phone_number);
-//
-//        EditText personalEmail = (EditText) getView().findViewById(R.id.personal_email);
-//
-//        EditText firstCompany = (EditText) getView().findViewById(R.id.first_company);
-//        EditText firstCompanyPosition = (EditText) getView().findViewById(R.id.first_company_position);
-
-
     }
 
     private void drawUserInfo() {
@@ -164,6 +162,13 @@ public class ProfileTab extends Fragment implements View.OnClickListener, UserIn
         if (v == editIcon) {
             editProfile(getView());
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        drawUserInfo();
+        drawUserCompanies();
+
     }
 
     @Override
