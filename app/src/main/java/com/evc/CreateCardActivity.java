@@ -1,14 +1,13 @@
 package com.evc;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.evc.adapters.UserCardsAdapter;
+import com.evc.adapters.TemplateAdapter;
 import com.evc.models.Card;
 
 import java.util.ArrayList;
@@ -16,26 +15,24 @@ import java.util.ArrayList;
 /**
  * Created by khrak on 7/26/16.
  */
-public class UserCardsActivity extends AppCompatActivity{
+public class CreateCardActivity extends AppCompatActivity {
 
     private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_cards);
+        setContentView(R.layout.add_card);
 
         context = this;
 
         drawCards();
-//        Intent intent = new Intent(this, CardsActivity.class);
-//        startActivity(intent);
     }
 
     private void drawCards() {
 
-        ListView listView = (ListView) findViewById(R.id.user_cards_list);
-
+        System.out.println("yuy");
+        ListView listView = (ListView) findViewById(R.id.templates_list);
 
         ArrayList<Card> cards = new ArrayList<Card>();
 
@@ -48,25 +45,22 @@ public class UserCardsActivity extends AppCompatActivity{
         cards.add(card1);
         cards.add(card2);
 
-        UserCardsAdapter userCardsAdapter = new UserCardsAdapter(this, cards);
 
-        listView.setAdapter(userCardsAdapter);
+        TemplateAdapter templateAdapter = new TemplateAdapter(this, cards);
+
+        listView.setAdapter(templateAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Card card = (Card) ((UserCardsAdapter)parent.getAdapter()).getItem(position);
-                Intent intent = new Intent(context, SendCardActivity.class);
-                intent.putExtra("card_id", card.getid());
-                startActivity(intent);
+                Card card = (Card) ((TemplateAdapter)parent.getAdapter()).getItem(position);
+
+                System.out.println(card.getid());
+//                Intent intent = new Intent(context, SendCardActivity.class);
+//                intent.putExtra("card_id", card.getid());
+//                startActivity(intent);
             }
         });
 
-    }
-
-    public void addCard(View view) {
-
-        Intent intent = new Intent(this, CreateCardActivity.class);
-        startActivity(intent);
     }
 }

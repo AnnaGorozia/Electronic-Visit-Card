@@ -33,6 +33,7 @@
         // android:theme="@style/AppTheme.Dark.Dialog"
 
         <activity android:name="CompanyProfileActivity"/>
+        <activity android:name=".CreateCardActivity"/>
         <activity android:name=".CardsActivity"/>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
