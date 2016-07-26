@@ -16,8 +16,6 @@ public class CompanyProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.company_profile);
 
-        getSupportActionBar().hide();
-
 
 
         drawProfilePage();
