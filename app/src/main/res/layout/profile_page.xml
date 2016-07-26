@@ -220,7 +220,7 @@
                     android:id="@+id/company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/google_inc"
+                    android:text="Google inc"
                     android:textSize="19sp"
                     android:textColor="#424242"/>
 

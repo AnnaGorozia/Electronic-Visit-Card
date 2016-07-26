@@ -2,10 +2,7 @@ package com.evc;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,8 +29,6 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
         ArrayList<String> numbers = new ArrayList<>(Arrays.asList("(521) 465-565", "(557) 224-253"));
 
-        listView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                numbers.size() * 150));
 
 
     }
