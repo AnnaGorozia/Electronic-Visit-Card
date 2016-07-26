@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import com.evc.adapters.UserCardsAdapter;
 import com.evc.models.Card;
-import com.evc.tasks.CardsActivity;
 
 import java.util.ArrayList;
 
@@ -26,14 +25,9 @@ public class UserCardsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_cards);
 
-        Intent intent = new Intent(this, CardsActivity.class);
-        startService(intent);
-
         context = this;
 
         drawCards();
-//        Intent intent = new Intent(this, CardsActivity.class);
-//        startActivity(intent);
     }
 
     private void drawCards() {

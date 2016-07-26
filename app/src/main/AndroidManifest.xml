@@ -34,7 +34,6 @@
 
         <activity android:name="CompanyProfileActivity"/>
         <activity android:name=".CreateCardActivity"/>
-        <activity android:name=".tasks.CardsActivity"/>
 
         <activity android:name=".AddCardActivity"/>
 
