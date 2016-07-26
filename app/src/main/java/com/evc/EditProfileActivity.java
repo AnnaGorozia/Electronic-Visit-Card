@@ -154,7 +154,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
                 UserServiceTask userServiceTask = new ServerUserUpdateTask();
                 userServiceTask.setNetworkEventListener(this);
-                String[] taskParams = {firstNameEdited, lastNameEdited, user.getEmail(), phoneEdited, newPasswordEntered};
+                String[] taskParams = {user.getid(), firstNameEdited, lastNameEdited, user.getEmail(), phoneEdited, newPasswordEntered};
                 userServiceTask.execute(taskParams);
 
 
