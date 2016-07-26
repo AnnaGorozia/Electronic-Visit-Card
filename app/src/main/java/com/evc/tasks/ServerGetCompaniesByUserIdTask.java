@@ -1,5 +1,6 @@
 package com.evc.tasks;
 
+import com.evc.MainActivity;
 import com.evc.models.Company;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ServerGetCompaniesByUserIdTask extends UserServiceCompaniesTask {
 
     private static Gson gson = new GsonBuilder().create();
-    private String url = "http://192.168.43.188:8082/UserService";
+    private String url = MainActivity.url + "UserService";
 
     private List<Company> companies;
 

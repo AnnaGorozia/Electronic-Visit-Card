@@ -193,4 +193,9 @@ public class CompanySignupActivity extends AppCompatActivity implements NetworkE
         progressDialog.dismiss();
 
     }
+
+    @Override
+    public void onUserUpdated(String message) {
+
+    }
 }

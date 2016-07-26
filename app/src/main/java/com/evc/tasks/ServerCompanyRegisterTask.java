@@ -1,5 +1,6 @@
 package com.evc.tasks;
 
+import com.evc.MainActivity;
 import com.evc.models.Company;
 import com.evc.models.User;
 import com.google.gson.Gson;
@@ -18,7 +19,7 @@ import java.net.URL;
 public class ServerCompanyRegisterTask extends CompanyServiceTask {
 
     private static Gson gson = new GsonBuilder().create();
-    private String url = "http://192.168.43.188:8082/CompanyService";
+    private String url = MainActivity.url + "CompanyService";
 
     private String message;
 

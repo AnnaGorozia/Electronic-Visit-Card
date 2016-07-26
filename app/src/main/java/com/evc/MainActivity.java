@@ -61,12 +61,14 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
     private static final String USER_ID = "user_id";
     private static final String NO_LOGED_IN_USER = "-1";
     public static final int LOGIN_CODE = 5;
-    private static final String USER = "user";
-    private SharedPreferences sharedPref;
+    public static final String USER = "user";
+    public static SharedPreferences sharedPref;
     private static User user;
     private static String userId;
     private static List<Company> userCompanies;
     private static Gson gson = new GsonBuilder().create();
+
+    public static String url = "http://192.168.0.110:8082/";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,6 +161,10 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         return user;
     }
 
+    public static void setUser(User user) {
+        MainActivity.user = user;
+    }
+
     public static void setUserId(String userId) {
         MainActivity.userId = userId;
     }
@@ -226,6 +232,11 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
 
     @Override
     public void onCompanyRegistered(String message) {
+
+    }
+
+    @Override
+    public void onUserUpdated(String message) {
 
     }
 
