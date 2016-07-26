@@ -1,4 +1,4 @@
-package com.evc;
+package com.evc.tasks;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.evc.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +30,7 @@ public class CardsActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.template2);
+        setContentView(R.layout.template3);
 
 
         HashMap config = new HashMap();
@@ -40,14 +41,14 @@ public class CardsActivity extends AppCompatActivity{
 
     }
 
-    public void click(View view) throws IOException {
+    public void cardCreated(View view) throws IOException {
         System.out.println("clicked!");
 
         file = new File(this.getFilesDir() + "/","sample.png");
 
         System.out.println(file.getAbsolutePath());
 
-        RelativeLayout v = (RelativeLayout)findViewById(R.id.template2);
+        RelativeLayout v = (RelativeLayout)findViewById(R.id.template3);
         v.setDrawingCacheEnabled(true);
         v.buildDrawingCache();
         Bitmap bm = view.getDrawingCache();

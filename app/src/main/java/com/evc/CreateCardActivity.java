@@ -1,6 +1,7 @@
 package com.evc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -42,8 +43,16 @@ public class CreateCardActivity extends AppCompatActivity {
         Card card2 = new Card("http://res.cloudinary.com/dpavqa5hs/image/upload/v1469525310/aynhujdbsu7h9z31xdta.png");
         card2.setId("2");
 
+        Card card3 = new Card("http://res.cloudinary.com/dpavqa5hs/image/upload/v1469565460/jburww0i88qjegybn1xg.png");
+        card3.setId("3");
+
+        Card card4 = new Card("http://res.cloudinary.com/dpavqa5hs/image/upload/v1469565525/uzzlevxe0vucvoyeq8nb.png");
+        card4.setId("4");
+
         cards.add(card1);
         cards.add(card2);
+        cards.add(card3);
+        cards.add(card4);
 
 
         TemplateAdapter templateAdapter = new TemplateAdapter(this, cards);
@@ -56,9 +65,9 @@ public class CreateCardActivity extends AppCompatActivity {
                 Card card = (Card) ((TemplateAdapter)parent.getAdapter()).getItem(position);
 
                 System.out.println(card.getid());
-//                Intent intent = new Intent(context, SendCardActivity.class);
-//                intent.putExtra("card_id", card.getid());
-//                startActivity(intent);
+                Intent intent = new Intent(context, AddCardActivity.class);
+                intent.putExtra("template_id", card.getid());
+                startActivity(intent);
             }
         });
 

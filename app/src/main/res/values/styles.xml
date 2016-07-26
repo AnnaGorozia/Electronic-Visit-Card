@@ -35,6 +35,7 @@
         <item name="android:textColorPrimary">@color/iron</item>
         <item name="android:background">@color/CornflowerBlue</item>
     </style>
+
     <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/CornflowerBlue</item>
