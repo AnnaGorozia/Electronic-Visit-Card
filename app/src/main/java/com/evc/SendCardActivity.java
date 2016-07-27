@@ -8,6 +8,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by khrak on 7/26/16.
@@ -33,6 +36,11 @@ public class SendCardActivity extends AppCompatActivity {
                 android.R.layout.simple_dropdown_item_1line, USERS);
 
         userField.setAdapter(adapter);
+
+        ImageView imageView = (ImageView) findViewById(R.id.sending_card);
+
+        Picasso.with(this).load("http://res.cloudinary.com/dpavqa5hs/image/upload/v1469525310/aynhujdbsu7h9z31xdta.png")
+                .into(imageView);
     }
 
 //    public void showPopup(View v) {
@@ -54,63 +62,63 @@ public class SendCardActivity extends AppCompatActivity {
 
         System.out.println("bluetooth clicked");
 
-//        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linear_layout);
-//
-//        TextView viewToBeConverted = (TextView) findViewById(R.id.first_name);
-//        linearLayout.setDrawingCacheEnabled(true);
-//
-//        //Toast.makeText(MainActivity.this, file.toString(), Toast.LENGTH_LONG).show();
-//
-//        File file = new File(getFilesDir() + "/","sample.png");
-//
-//        System.out.println(file.getAbsolutePath());
-//
-//        linearLayout.setDrawingCacheEnabled(true);
-//        linearLayout.buildDrawingCache();
-//
-//
-//        Bitmap bm = linearLayout.getDrawingCache();
-//
-//        System.out.println(bm);
-//        FileOutputStream out = null;
-//        try {
-//            out = new FileOutputStream(file);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        viewToBeConverted.setText("olala");
-//        viewToBeConverted.setDrawingCacheEnabled(true);
-//
-//
-//        Bitmap viewBitmap = linearLayout.getDrawingCache();
-//
-//
-//        linearLayout.setVisibility(View.VISIBLE);
-//
-//
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        viewBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos); //bm is the bitmap object
-//
-//        byte[] b = baos.toByteArray();
-//
-//        try
-//        {
-//
-//            out.write(b);
-//            out.flush();
-//            out.close();
-//
-//            Intent intent = new Intent();
-//            intent.setAction(Intent.ACTION_SEND);
-//            intent.setType("image/png");
-//            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file) );
-//            startActivity(intent);
-//        }
-//        catch (Exception e)
-//        {
-//
-//        }
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linear_layout);
+
+        TextView viewToBeConverted = (TextView) findViewById(R.id.first_name);
+        linearLayout.setDrawingCacheEnabled(true);
+
+        //Toast.makeText(MainActivity.this, file.toString(), Toast.LENGTH_LONG).show();
+
+        File file = new File(getFilesDir() + "/","sample.png");
+
+        System.out.println(file.getAbsolutePath());
+
+        linearLayout.setDrawingCacheEnabled(true);
+        linearLayout.buildDrawingCache();
+
+
+        Bitmap bm = linearLayout.getDrawingCache();
+
+        System.out.println(bm);
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        viewToBeConverted.setText("olala");
+        viewToBeConverted.setDrawingCacheEnabled(true);
+
+
+        Bitmap viewBitmap = linearLayout.getDrawingCache();
+
+
+        linearLayout.setVisibility(View.VISIBLE);
+
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        viewBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos); //bm is the bitmap object
+
+        byte[] b = baos.toByteArray();
+
+        try
+        {
+
+            out.write(b);
+            out.flush();
+            out.close();
+
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("image/png");
+            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file) );
+            startActivity(intent);
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/employee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mamuka Sakhelashvili"
+                android:textSize="19sp"
+                android:textColor="#424242"/>
+
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_below="@id/employee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Software Engineer"
+                android:textSize="17sp"
+                android:textColor="#6E6E6E"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

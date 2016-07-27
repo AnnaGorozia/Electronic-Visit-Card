@@ -30,7 +30,6 @@
 
         // android:theme="@style/AppTheme.Dark.Dialog"
 
-        <activity android:name="CompanyProfileActivity"/>
         <activity android:name=".UserSentCardsActivity"/>
         <activity android:name=".ReceivedCardsActivity"/>
         <activity android:name=".CreateCardActivity"/>

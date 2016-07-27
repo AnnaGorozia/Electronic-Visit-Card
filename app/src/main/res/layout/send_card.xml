@@ -54,12 +54,12 @@
         </RelativeLayout>
 
         <ImageView
+            android:id="@+id/sending_card"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:elevation="2dp"
-            android:src="@drawable/card1"/>
+            android:elevation="2dp"/>
 
 
         <AutoCompleteTextView
