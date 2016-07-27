@@ -15,6 +15,7 @@ import com.evc.R;
 import com.evc.models.Card;
 import com.evc.models.Company;
 import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
 import com.evc.tasks.companytasks.CompanyServiceTask;
 import com.evc.tasks.companytasks.ServerCompanyRegisterTask;
@@ -224,12 +225,12 @@ public class CompanySignupActivity extends AppCompatActivity implements NetworkE
     }
 
     @Override
-    public void onSentHistoryDownloaded(List<History> histories) {
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 
     @Override
-    public void onReceivedHistoryDownloaded(List<History> histories) {
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 }

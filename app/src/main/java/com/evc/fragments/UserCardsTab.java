@@ -20,6 +20,7 @@ import com.evc.adapters.UserCardsAdapter;
 import com.evc.models.Card;
 import com.evc.models.Company;
 import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
 import com.evc.tasks.cardtasks.CardListServiceTask;
 import com.evc.tasks.cardtasks.ServerGetAllUserCardsTaskList;
@@ -227,12 +228,12 @@ public class UserCardsTab extends Fragment implements View.OnClickListener, Netw
     }
 
     @Override
-    public void onSentHistoryDownloaded(List<History> histories) {
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 
     @Override
-    public void onReceivedHistoryDownloaded(List<History> histories) {
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 }

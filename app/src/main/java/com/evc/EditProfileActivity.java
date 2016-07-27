@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.evc.models.Card;
 import com.evc.models.Company;
 import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
 import com.evc.tasks.usertasks.ServerUserUpdateTask;
 import com.evc.tasks.usertasks.UserServiceTask;
@@ -223,12 +224,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
-    public void onSentHistoryDownloaded(List<History> histories) {
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 
     @Override
-    public void onReceivedHistoryDownloaded(List<History> histories) {
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 }

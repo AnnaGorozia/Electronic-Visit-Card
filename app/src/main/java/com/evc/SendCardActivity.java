@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.evc.models.Card;
 import com.evc.models.Company;
 import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
 import com.evc.tasks.historytasks.HistoryServiceTask;
 import com.evc.tasks.historytasks.ServerAddHistoryTask;
@@ -50,15 +51,17 @@ public class SendCardActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_card);
 
+        Intent intent = getIntent();
+        cardid = intent.getStringExtra("card_id");
+        cardPath = intent.getStringExtra("card_path");
+
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(this);
 
         selectedImage = (ImageView) findViewById(R.id.selected_image);
         Picasso.with(getApplicationContext()).load(cardPath).into(selectedImage);
 
-        Intent intent = getIntent();
-        cardid = intent.getStringExtra("card_id");
-        cardPath = intent.getStringExtra("card_path");
+
 
         userField = (AutoCompleteTextView) findViewById(R.id.enter_user_name);
 
@@ -100,8 +103,8 @@ public class SendCardActivity extends AppCompatActivity implements View.OnClickL
 
     public void bluetoothClick(View view) {
         System.out.println("bluetooth man!");
-        Intent intent = new Intent(this, BluetoothScanActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, BluetoothScanActivity.class);
+//        startActivity(intent);
     }
 
     @Override
@@ -174,12 +177,12 @@ public class SendCardActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onSentHistoryDownloaded(List<History> histories) {
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 
     @Override
-    public void onReceivedHistoryDownloaded(List<History> histories) {
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 
