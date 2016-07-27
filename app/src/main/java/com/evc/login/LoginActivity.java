@@ -14,14 +14,15 @@ import android.widget.Toast;
 
 import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.models.Card;
 import com.evc.models.Company;
+import com.evc.models.History;
 import com.evc.models.User;
-import com.evc.tasks.ServerGetUserByMailTask;
-import com.evc.tasks.ServerGetUserTask;
-import com.evc.tasks.ServerUserLoginTask;
-import com.evc.tasks.ServerUserRegisterTask;
-import com.evc.tasks.UserServiceObjectTask;
-import com.evc.tasks.UserServiceTask;
+import com.evc.tasks.usertasks.ServerGetUserByMailTask;
+import com.evc.tasks.usertasks.ServerUserLoginTask;
+import com.evc.tasks.usertasks.ServerUserRegisterTask;
+import com.evc.tasks.usertasks.UserServiceObjectTask;
+import com.evc.tasks.usertasks.UserServiceTask;
 import com.evc.transport.NetworkEventListener;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -30,13 +31,11 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.FacebookSdk;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -287,6 +286,41 @@ public class LoginActivity extends AppCompatActivity implements NetworkEventList
 
     @Override
     public void onUserUpdated(String message) {
+
+    }
+
+    @Override
+    public void onAllUsersDownloaded(List<User> users) {
+
+    }
+
+    @Override
+    public void onUserCardsDownloaded(List<Card> cards) {
+
+    }
+
+    @Override
+    public void onCardByIdDownloaded(Card card) {
+
+    }
+
+    @Override
+    public void onUserCardAdded(String message) {
+
+    }
+
+    @Override
+    public void onHistoryAdded(String message) {
+
+    }
+
+    @Override
+    public void onSentHistoryDownloaded(List<History> histories) {
+
+    }
+
+    @Override
+    public void onReceivedHistoryDownloaded(List<History> histories) {
 
     }
 }

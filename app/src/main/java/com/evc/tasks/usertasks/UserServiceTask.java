@@ -1,4 +1,4 @@
-package com.evc.tasks;
+package com.evc.tasks.usertasks;
 
 import android.os.AsyncTask;
 

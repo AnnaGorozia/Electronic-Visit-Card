@@ -30,6 +30,12 @@ public class CreateCardActivity extends AppCompatActivity {
         drawCards();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        MainActivity.switchToCardsTab();
+        finish();
+    }
+
     private void drawCards() {
 
         System.out.println("yuy");

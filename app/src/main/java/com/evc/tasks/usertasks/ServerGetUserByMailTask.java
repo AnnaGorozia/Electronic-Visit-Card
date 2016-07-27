@@ -1,4 +1,4 @@
-package com.evc.tasks;
+package com.evc.tasks.usertasks;
 
 import com.evc.MainActivity;
 import com.evc.models.User;

@@ -1,8 +1,7 @@
-package com.evc.tasks;
+package com.evc.tasks.historytasks;
 
 import com.evc.MainActivity;
-import com.evc.models.Company;
-import com.evc.models.User;
+import com.evc.models.History;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -16,32 +15,29 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ServerCompanyRegisterTask extends CompanyServiceTask {
-
+public class ServerAddHistoryTask extends HistoryServiceTask{
     private static Gson gson = new GsonBuilder().create();
-    private String url = MainActivity.url + "CompanyService";
+    private String url = MainActivity.url + "HistoryService";
 
     private String message;
 
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        networkEventListener.onUserRegistered(message);
+        networkEventListener.onHistoryAdded(message);
     }
 
     @Override
     protected String doInBackground(String... params) {
 
-        url += "/addCompany";
+        url += "/addHistory";
 
-        Company company = new Company();
-        company.setName(params[0]);
-        company.setAddress(params[1]);
-        company.setEmail(params[2]);
-        company.setPhone(params[3]);
-        company.setPassword(params[4]);
+        History history = new History();
+        history.setSenderId(params[0]);
+        history.setReceiverId(params[1]);
+        history.setCardId(params[2]);
 
-        String body = gson.toJson(company, Company.class);
+        String body = gson.toJson(history);
 
         message = sendPostRequest(url, body);
 

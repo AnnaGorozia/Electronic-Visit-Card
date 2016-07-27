@@ -1,15 +1,13 @@
-package com.evc.tasks;
+package com.evc.tasks.historytasks;
 
 import android.os.AsyncTask;
 
-import com.evc.models.User;
 import com.evc.transport.NetworkEventListener;
 
-public abstract class UserServiceObjectTask extends AsyncTask<String, Void, User> {
+public abstract class HistoryServiceTask extends AsyncTask<String, Void, String> {
     NetworkEventListener networkEventListener;
 
     public void setNetworkEventListener(NetworkEventListener networkEventListener) {
         this.networkEventListener = networkEventListener;
     }
-
 }

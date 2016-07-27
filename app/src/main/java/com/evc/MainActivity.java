@@ -3,9 +3,6 @@ package com.evc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,25 +12,23 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.evc.fragments.ProfileTab;
 import com.evc.fragments.ReceivedHistoryTab;
 import com.evc.fragments.SentHistoryTab;
 import com.evc.fragments.UserCardsTab;
 import com.evc.login.LoginActivity;
+import com.evc.models.Card;
 import com.evc.models.Company;
+import com.evc.models.History;
 import com.evc.models.User;
-import com.evc.tasks.ServerGetCompaniesByUserIdTask;
-import com.evc.tasks.ServerGetUserTask;
-import com.evc.tasks.UserServiceCompaniesTask;
-import com.evc.tasks.UserServiceObjectTask;
+import com.evc.tasks.companytasks.ServerGetCompaniesByUserIdTask;
+import com.evc.tasks.usertasks.ServerGetUserTask;
+import com.evc.tasks.companytasks.UserServiceCompaniesTask;
+import com.evc.tasks.usertasks.UserServiceObjectTask;
 import com.evc.transport.NetworkEventListener;
 import com.evc.transport.UserInfoDownloaderListener;
 import com.facebook.FacebookSdk;
@@ -42,8 +37,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
     private static Gson gson = new GsonBuilder().create();
 
     public static String url = "http://192.168.0.110:8787/";
+
+    public static Context getContext() {
+        return MainActivity.getContext();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,6 +187,10 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
         }
     }
 
+    public static void switchToCardsTab(){
+        viewPager.setCurrentItem(1);
+    }
+
     private void init() {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -237,6 +238,41 @@ public class MainActivity extends AppCompatActivity implements NetworkEventListe
 
     @Override
     public void onUserUpdated(String message) {
+
+    }
+
+    @Override
+    public void onAllUsersDownloaded(List<User> users) {
+
+    }
+
+    @Override
+    public void onUserCardsDownloaded(List<Card> cards) {
+
+    }
+
+    @Override
+    public void onCardByIdDownloaded(Card card) {
+
+    }
+
+    @Override
+    public void onUserCardAdded(String message) {
+
+    }
+
+    @Override
+    public void onHistoryAdded(String message) {
+
+    }
+
+    @Override
+    public void onSentHistoryDownloaded(List<History> histories) {
+
+    }
+
+    @Override
+    public void onReceivedHistoryDownloaded(List<History> histories) {
 
     }
 

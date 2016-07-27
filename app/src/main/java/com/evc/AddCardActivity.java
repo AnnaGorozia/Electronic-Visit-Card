@@ -1,5 +1,6 @@
 package com.evc;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,25 +9,38 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.cloudinary.utils.StringUtils;
+import com.evc.models.Card;
+import com.evc.models.Company;
+import com.evc.models.History;
+import com.evc.models.User;
+import com.evc.tasks.cardtasks.CardServiceTask;
+import com.evc.tasks.cardtasks.ServerCardAddedTask;
+import com.evc.transport.NetworkEventListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by khrak on 7/26/16.
  */
-public class AddCardActivity extends AppCompatActivity {
+public class AddCardActivity extends AppCompatActivity implements NetworkEventListener{
 
     Cloudinary cloudinary;
     Map Result;
     String file_path;
     File file;
+
+    private ProgressDialog progressDialog;
+    private static String path;
 
     RelativeLayout layout;
 
@@ -75,6 +89,10 @@ public class AddCardActivity extends AppCompatActivity {
             }
         }
 
+        progressDialog = new ProgressDialog(AddCardActivity.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Creating Card...");
 
     }
 
@@ -100,10 +118,81 @@ public class AddCardActivity extends AppCompatActivity {
 
         Upload task = new Upload( cloudinary );
         task.execute(new String[] { "http://www.freeuni.edu.ge" });
+        progressDialog.show();
 
+    }
 
-        Intent intent = new Intent(context, UserCardsActivity.class);
-        startActivity(intent);
+    @Override
+    public void onUserRegistered(String message) {
+
+    }
+
+    @Override
+    public void onUserLoggedIn(String message) {
+
+    }
+
+    @Override
+    public void onUserObjectReturned(User user) {
+
+    }
+
+    @Override
+    public void onUserObjectByMail(User user) {
+
+    }
+
+    @Override
+    public void onUserCompanies(List<Company> companies) {
+
+    }
+
+    @Override
+    public void onCompanyRegistered(String message) {
+
+    }
+
+    @Override
+    public void onUserUpdated(String message) {
+
+    }
+
+    @Override
+    public void onAllUsersDownloaded(List<User> users) {
+
+    }
+
+    @Override
+    public void onUserCardsDownloaded(List<Card> cards) {
+
+    }
+
+    @Override
+    public void onCardByIdDownloaded(Card card) {
+
+    }
+
+    @Override
+    public void onUserCardAdded(String message) {
+        MainActivity.switchToCardsTab();
+        progressDialog.dismiss();
+        Toast.makeText(MainActivity.getContext(), "New Cards has been added", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onHistoryAdded(String message) {
+
+    }
+
+    @Override
+    public void onSentHistoryDownloaded(List<History> histories) {
+
+    }
+
+    @Override
+    public void onReceivedHistoryDownloaded(List<History> histories) {
+
     }
 
     private class Upload extends AsyncTask<String, Void, String> {
@@ -124,9 +213,12 @@ public class AddCardActivity extends AppCompatActivity {
                 Result = mCloudinary.uploader().upload(file,
                         ObjectUtils.emptyMap());
 
-                for(Object key: Result.keySet()) {
-                    System.out.println(key + " " + Result.get(key));
-                }
+//                for(Object key: Result.keySet()) {
+//                    System.out.println(key + " " + Result.get(key));
+//                }
+                path = Result.get("url").toString();
+
+
 
             } catch (IOException e) {
                 // TODO Auto-generated catch block
@@ -137,8 +229,12 @@ public class AddCardActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            String[] taskParams = {MainActivity.getUser().getid(), path};
 
-            System.out.println("uploaded");
+            CardServiceTask cardServiceTask = new ServerCardAddedTask();
+            cardServiceTask.setNetworkEventListener(AddCardActivity.this);
+            cardServiceTask.execute(taskParams);
+
         }
     }
 }

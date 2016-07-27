@@ -1,17 +1,15 @@
-package com.evc.tasks;
+package com.evc.tasks.cardtasks;
 
 import android.os.AsyncTask;
 
-import com.evc.models.Company;
 import com.evc.transport.NetworkEventListener;
 
-import java.util.List;
-
-public abstract class UserServiceCompaniesTask extends AsyncTask<String, Void, List<Company>> {
+public abstract class CardServiceTask extends AsyncTask<String, Void, String> {
     NetworkEventListener networkEventListener;
 
     public void setNetworkEventListener(NetworkEventListener networkEventListener) {
         this.networkEventListener = networkEventListener;
-}
+    }
+
 
 }
