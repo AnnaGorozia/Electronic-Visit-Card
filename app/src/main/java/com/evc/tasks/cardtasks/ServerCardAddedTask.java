@@ -1,7 +1,7 @@
-package com.evc.tasks;
+package com.evc.tasks.cardtasks;
 
 import com.evc.MainActivity;
-import com.evc.models.User;
+import com.evc.models.Card;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,32 +15,28 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ServerUserRegisterTask extends UserServiceTask {
-
+public class ServerCardAddedTask extends CardServiceTask{
     private static Gson gson = new GsonBuilder().create();
-    private String url = MainActivity.url + "UserService";
+    private String url = MainActivity.url + "CardService";
 
     private String message;
 
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        networkEventListener.onUserRegistered(message);
+        networkEventListener.onUserCardAdded(message);
     }
 
     @Override
     protected String doInBackground(String... params) {
 
-        url += "/registrateUser";
+        url += "/cards/user/addCard/";
 
-        User user = new User();
-        user.setFirstName(params[0]);
-        user.setLastName(params[1]);
-        user.setEmail(params[2]);
-        user.setPhone(params[3]);
-        user.setPassword(params[4]);
+        url += params[0];
 
-        String body = gson.toJson(user);
+        Card card = new Card(params[1]);
+
+        String body = gson.toJson(card);
 
         message = sendPostRequest(url, body);
 
@@ -90,3 +86,4 @@ public class ServerUserRegisterTask extends UserServiceTask {
         return result;
     }
 }
+

@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import com.evc.MainActivity;
 import com.evc.R;
+import com.evc.models.Card;
 import com.evc.models.Company;
+import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
-import com.evc.tasks.ServerUserRegisterTask;
-import com.evc.tasks.UserServiceTask;
+import com.evc.tasks.usertasks.ServerUserRegisterTask;
+import com.evc.tasks.usertasks.UserServiceTask;
 import com.evc.transport.NetworkEventListener;
 
 import java.util.List;
@@ -228,6 +231,41 @@ public class SignupActivity extends AppCompatActivity implements NetworkEventLis
 
     @Override
     public void onUserUpdated(String message) {
+
+    }
+
+    @Override
+    public void onAllUsersDownloaded(List<User> users) {
+
+    }
+
+    @Override
+    public void onUserCardsDownloaded(List<Card> cards) {
+
+    }
+
+    @Override
+    public void onCardByIdDownloaded(Card card) {
+
+    }
+
+    @Override
+    public void onUserCardAdded(String message) {
+
+    }
+
+    @Override
+    public void onHistoryAdded(String message) {
+
+    }
+
+    @Override
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
+
+    }
+
+    @Override
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
 
     }
 }

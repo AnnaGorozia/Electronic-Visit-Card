@@ -72,7 +72,7 @@ public class UserCardsActivity extends AppCompatActivity{
 
     public void addCard(View view) {
 
-        Intent intent = new Intent(this, ReceivedCardsActivity.class);
+        Intent intent = new Intent(this, CreateCardActivity.class);
         startActivity(intent);
     }
 }

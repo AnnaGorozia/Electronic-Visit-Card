@@ -1,4 +1,4 @@
-package com.evc.tasks;
+package com.evc.tasks.companytasks;
 
 import com.evc.MainActivity;
 import com.evc.models.Company;

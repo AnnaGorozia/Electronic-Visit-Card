@@ -1,4 +1,4 @@
-package com.evc.tasks;
+package com.evc.tasks.usertasks;
 
 import com.evc.MainActivity;
 import com.evc.models.User;
@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ServerUserLoginTask extends UserServiceTask {
+public class ServerUserRegisterTask extends UserServiceTask {
 
     private static Gson gson = new GsonBuilder().create();
     private String url = MainActivity.url + "UserService";
@@ -25,15 +25,22 @@ public class ServerUserLoginTask extends UserServiceTask {
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        networkEventListener.onUserLoggedIn(message);
+        networkEventListener.onUserRegistered(message);
     }
 
     @Override
     protected String doInBackground(String... params) {
 
-        url += "/users/userLogin/" + params[0] + "/" + params[1];
+        url += "/registrateUser";
 
-        String body = "";
+        User user = new User();
+        user.setFirstName(params[0]);
+        user.setLastName(params[1]);
+        user.setEmail(params[2]);
+        user.setPhone(params[3]);
+        user.setPassword(params[4]);
+
+        String body = gson.toJson(user);
 
         message = sendPostRequest(url, body);
 

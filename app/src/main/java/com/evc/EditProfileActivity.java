@@ -1,6 +1,5 @@
 package com.evc;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.evc.models.Card;
 import com.evc.models.Company;
+import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
-import com.evc.tasks.ServerUserLoginTask;
-import com.evc.tasks.ServerUserUpdateTask;
-import com.evc.tasks.UserServiceTask;
+import com.evc.tasks.usertasks.ServerUserUpdateTask;
+import com.evc.tasks.usertasks.UserServiceTask;
 import com.evc.transport.NetworkEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -195,5 +196,40 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onUserUpdated(String message) {
         finish();
+    }
+
+    @Override
+    public void onAllUsersDownloaded(List<User> users) {
+
+    }
+
+    @Override
+    public void onUserCardsDownloaded(List<Card> cards) {
+
+    }
+
+    @Override
+    public void onCardByIdDownloaded(Card card) {
+
+    }
+
+    @Override
+    public void onUserCardAdded(String message) {
+
+    }
+
+    @Override
+    public void onHistoryAdded(String message) {
+
+    }
+
+    @Override
+    public void onSentHistoryDownloaded(List<HistoryEntry> histories) {
+
+    }
+
+    @Override
+    public void onReceivedHistoryDownloaded(List<HistoryEntry> histories) {
+
     }
 }

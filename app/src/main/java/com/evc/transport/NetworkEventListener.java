@@ -1,6 +1,9 @@
 package com.evc.transport;
 
+import com.evc.models.Card;
 import com.evc.models.Company;
+import com.evc.models.History;
+import com.evc.models.HistoryEntry;
 import com.evc.models.User;
 
 import java.util.List;
@@ -13,5 +16,13 @@ public interface NetworkEventListener {
 	public void onUserCompanies(List<Company> companies);
 	public void onCompanyRegistered(String message);
 	public void onUserUpdated(String message);
+	public void onAllUsersDownloaded(List<User> users);
 
+	public void onUserCardsDownloaded(List<Card> cards);
+	public void onCardByIdDownloaded(Card card);
+	public void onUserCardAdded(String message);
+
+	public void onHistoryAdded(String message);
+	public void onSentHistoryDownloaded(List<HistoryEntry> histories);
+	public void onReceivedHistoryDownloaded(List<HistoryEntry> histories);
 }

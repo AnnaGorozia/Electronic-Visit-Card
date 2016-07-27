@@ -45,6 +45,7 @@
         <ListView
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
             android:id="@+id/user_cards_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -62,12 +63,11 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="70dp"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:borderWidth="0dp"
-        android:backgroundTint="#159BE9"
-        android:onClick="addCard"/>
+        android:backgroundTint="#159BE9"/>
 
 
 </RelativeLayout>

@@ -1,61 +1,54 @@
-package com.evc.tasks;
+package com.evc.tasks.usertasks;
 
 import com.evc.MainActivity;
 import com.evc.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
-public class ServerGetUserTask extends UserServiceObjectTask {
+public class ServerGetAllUsersTask extends UserServiceUsersTask{
+
+    @Override
+    protected List<User> doInBackground(String... params) {
+        url += "/users";
+
+        String body = "";
+
+        users = sendGetRequest(url, body);
+
+        return users;
+    }
 
     private static Gson gson = new GsonBuilder().create();
     private String url = MainActivity.url + "UserService";
 
-    private User user;
+    private List<User> users;
 
     @Override
-    protected void onPostExecute(User user) {
-        super.onPostExecute(user);
-        networkEventListener.onUserObjectReturned(user);
+    protected void onPostExecute(List<User> users) {
+        super.onPostExecute(users);
+        networkEventListener.onAllUsersDownloaded(users);
     }
 
-    @Override
-    protected User doInBackground(String... params) {
-
-        url += "/users/id/" + params[0];
-
-        String body = "";
-
-        user = sendGetRequest(url, body);
-
-        return user;
-    }
-
-    private User sendGetRequest(String url, String body) {
+    private List<User> sendGetRequest(String url, String body) {
         HttpURLConnection httpURLConnection;
         String data = body;
         String result = null;
         try{
-            //Connect
             httpURLConnection = (HttpURLConnection) ((new URL(url).openConnection()));
             httpURLConnection.setRequestProperty("Accept", "application/json");
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.connect();
 
-//            //Write
-//            OutputStream os = httpURLConnection.getOutputStream();
-//            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-//            writer.write(data);
-//            writer.close();
-//            os.close();
-
-            //Read
             BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(),"UTF-8"));
 
             String line = null;
@@ -73,7 +66,11 @@ public class ServerGetUserTask extends UserServiceObjectTask {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        User user = gson.fromJson(result, User.class);
-        return user;
+        List<User> users = null;
+        if (result.length() != 0) {
+            Type listType = new TypeToken<List<User>>(){}.getType();
+            users = gson.fromJson(result, listType);
+        }
+        return users;
     }
 }
